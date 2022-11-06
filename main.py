@@ -15,7 +15,7 @@ app.register_blueprint(candidate_blueprint)
 
 @app.route("/", methods=['GET'])
 def home():
-    response = {"Welcome to services of votes"}
+    response = {"message": "Welcome to services of votes"}
     return jsonify(response)
 
 
