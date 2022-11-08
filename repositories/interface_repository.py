@@ -22,7 +22,7 @@ class InterfaceRepository(Generic[T]):
         self.collection = model_class[0].__name__.lower()
 
     def load_file_config(self) -> dict:
-        with open("../config.json", "r") as config:
+        with open("config.json", "r") as config:
             data = json.load(config)
         return data
 
@@ -52,7 +52,7 @@ class InterfaceRepository(Generic[T]):
         item = self.transform_refs(item)
         if hasattr(item, '_id') and item._id != "":
             id_ = item._id
-            _id = ObjectId
+            _id = ObjectId(id_)
             delattr(item, '_id')
             item = item.__dict__
             updated_item = {"$set": item}

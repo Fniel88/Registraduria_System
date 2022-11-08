@@ -14,26 +14,26 @@ def get_all_candidates():
 
 
 @candidate_blueprint.route("/candidate/<string:id_>", methods=['GET'])
-def get_student_by_id(id_):
+def get_candidate_by_id(id_):
     response = candidate_controller.show(id_)
     return response, 200
 
 
 @candidate_blueprint.route("/candidate/insert", methods=['POST'])
-def insert_student():
-    student = request.get_json()
-    response = candidate_controller.create(student)
+def insert_candidate():
+    candidate = request.get_json()
+    response = candidate_controller.create(candidate)
     return response, 201
 
 
 @candidate_blueprint.route("/candidate/update/<string:id_>", methods=['PATCH'])
-def update_student(id_):
-    student = request.get_json()
-    response = candidate_controller.update(id_, student)
+def update_candidate(id_):
+    candidate = request.get_json()
+    response = candidate_controller.update(id_, candidate)
     return response, 201
 
 
 @candidate_blueprint.route("/candidate/delete/<string:id_>", methods=['DELETE'])
-def delete_student(id_):
+def delete_candidate(id_):
     response = candidate_controller.delete(id_)
     return response, 204

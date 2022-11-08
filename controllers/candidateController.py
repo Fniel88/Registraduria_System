@@ -5,7 +5,7 @@ from repositories.candidateRepository import CandidateRepository
 class CandidateController:
     def __init__(self):
         print("Candidate controller ready...")
-        self.candidate_repository = CandidateRepository
+        self.candidate_repository = CandidateRepository()
 
     def index(self) -> list:
         print("Get all candidates")
@@ -17,8 +17,8 @@ class CandidateController:
 
     def create(self, candidate_: dict) -> dict:
         print("insert a candidate")
-        candidate = Candidate(candidate_)
-        return self.candidate_repository.save(candidate)
+        candidate1 = Candidate(candidate_)
+        return self.candidate_repository.save(candidate1)
 
     def update(self, id_, candidate_: dict) -> dict:
         print("update a candidate")
@@ -27,4 +27,4 @@ class CandidateController:
 
     def delete(self, id_: str) -> str:
         print("delete a candidate" + id_)
-        return self.candidate_repository.delete(id_), {"Delete count": 1}
+        return self.candidate_repository.delete(id_)
