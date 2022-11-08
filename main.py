@@ -21,13 +21,13 @@ def home():
 
 # ===========================config execution code==============================================
 
-def load_config_file():
+def load_file_config():
     with open("config.json", "r") as config:
         data = json.load(config)
     return data
 
 
 if __name__ == '__main__':
-    data_config = load_config_file()
+    data_config = load_file_config()
     print("Server is running http://" + data_config.get('url-backend') + ":" + str(data_config.get('port')))
     serve(app, host=data_config.get('url-backend'), port=data_config.get('port'))
