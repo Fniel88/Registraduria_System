@@ -3,56 +3,56 @@ from repositories.candidateRepository import CandidateRepository
 
 
 class CandidateController:
+    # Constructor
     def __init__(self):
         """
 
+        :return:
         """
+        self.candidateRepository = CandidateRepository()
         print("Candidate controller ready...")
-        self.candidate_repository = CandidateRepository()
 
-    def index(self) -> list:
+    def get_all_candidate(self) -> list:
         """
-
-        :return:
+        This method get all the candidates stored in the DB
+        :return: list of candidates
         """
-        print("Get all candidates")
-        return self.candidate_repository.find_all()
+        return self.candidateRepository.find_all()
 
-    def show(self, id_: str) -> dict:
+    def get_candidate_by_id(self, id_: str) -> dict:
         """
-
+        This method gets one candidate in the DB by providing its id
         :param id_:
-        :return:
+        :return: candidate dictionary
         """
-        print("show candidates by ID")
-        return self.candidate_repository.find_by_id(id_)
+        return self.candidateRepository.find_by_id(id_)
 
-    def create(self, candidate_: dict) -> dict:
+    def insert_candidate(self, candidate_: dict) -> Candidate:
         """
-
+        This method inserts a party in the DB by providing its attributes in a dictionary
         :param candidate_:
-        :return:
+        :return: candidate dictionary
         """
-        print("insert a candidate")
-        candidate = Candidate(candidate_)
-        return self.candidate_repository.save(candidate)
+        new_candidate = Candidate(candidate_)
+        return self.candidateRepository.save(new_candidate)
 
-    def update(self, id_: str, candidate_: dict) -> dict:
+# UPDATE candidate
+    def update_candidate(self, id_: str, candidate_: dict) -> dict:
         """
-
-        :param id_:
+        This method updates a party in the DB by providing its id and attributes
         :param candidate_:
-        :return:
-        """
-        print("update a candidate")
-        candidate = Candidate(candidate_)
-        return self.candidate_repository.update(id_, candidate)
-
-    def delete(self, id_: str) -> dict:
-        """
-
         :param id_:
-        :return:
+        :return: candidate dictionary
         """
-        print("delete a candidate" + id_)
-        return self.candidate_repository.delete(id_)
+        candidate = Candidate(candidate_)
+        return self.candidateRepository.update(id_, candidate)
+
+# DELETE candidate
+    def delete_candidate(self, id_: str) -> dict:
+        """
+        This method deletes a candidate in the DB by providing its id
+        :param id_:
+        :return: message: "Delete candidate"
+        """
+        print("Deleted " + id_)
+        return self.candidateRepository.delete(id_)

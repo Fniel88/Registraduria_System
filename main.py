@@ -1,22 +1,21 @@
 import json
 
 from flask import Flask
-from flask import jsonify
 from flask_cors import CORS
 from waitress import serve
 
-from blueprints.candidateBlueprints import candidate_blueprint
+from blueprints.candidateBlueprints import candidate_blueprints
 
 
 app = Flask(__name__)
 cors = CORS(app)
-app.register_blueprint(candidate_blueprint)
+app.register_blueprint(candidate_blueprints)
 
 
 @app.route("/", methods=['GET'])
 def home():
     response = {"message": "Welcome to services of votes"}
-    return jsonify(response)
+    return response
 
 
 # ===========================config execution code==============================================
