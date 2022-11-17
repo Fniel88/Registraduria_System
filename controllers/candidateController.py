@@ -1,5 +1,7 @@
 from models.candidate import Candidate
+from models.party import Party
 from repositories.candidateRepository import CandidateRepository
+from repositories.partyRepository import PartyRepository
 
 
 class CandidateController:
@@ -10,6 +12,7 @@ class CandidateController:
         :return:
         """
         self.candidateRepository = CandidateRepository()
+        self.partyRepository = PartyRepository()
         print("Candidate controller ready...")
 
     def get_all_candidate(self) -> list:
@@ -56,3 +59,10 @@ class CandidateController:
         """
         print("Deleted " + id_)
         return self.candidateRepository.delete(id_)
+
+# SERVICE REFERENCE
+    def party_assign(self, candidate_id: str, party_id: str) -> dict:
+        candidate = self.partyRepository.find_by_id(candidate_id)
+        party = self.partyRepository.find_by_id(party_id)
+        candidate.party = party
+        return self.candidateRepository.save(candidate)

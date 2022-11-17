@@ -5,11 +5,17 @@ from flask_cors import CORS
 from waitress import serve
 
 from blueprints.candidateBlueprints import candidate_blueprints
+from blueprints.partyBlueprints import party_blueprints
+from blueprints.resultsBlueprints import result_blueprints
+from blueprints.tableBlueprints import table_blueprints
 
 
 app = Flask(__name__)
 cors = CORS(app)
 app.register_blueprint(candidate_blueprints)
+app.register_blueprint(party_blueprints)
+app.register_blueprint(result_blueprints)
+app.register_blueprint(table_blueprints)
 
 
 @app.route("/", methods=['GET'])
