@@ -30,7 +30,7 @@ class CandidateController:
         """
         return self.candidateRepository.find_by_id(id_)
 
-    def insert_candidate(self, candidate_: dict) -> Candidate:
+    def insert_candidate(self, candidate_: dict) -> dict:
         """
         This method inserts a party in the DB by providing its attributes in a dictionary
         :param candidate_:
@@ -62,7 +62,9 @@ class CandidateController:
 
 # SERVICE REFERENCE
     def party_assign(self, candidate_id: str, party_id: str) -> dict:
-        candidate = self.partyRepository.find_by_id(candidate_id)
-        party = self.partyRepository.find_by_id(party_id)
-        candidate.party = party
-        return self.candidateRepository.save(candidate)
+        candidate_dict = self.candidateRepository.find_by_id(candidate_id)
+        candidate_obj = Candidate(candidate_dict)
+        party_dict = self.partyRepository.find_by_id(party_id)
+        party_obj = Party(party_dict)
+        candidate_obj.party = party_obj
+        return self.candidateRepository.save(candidate_obj)

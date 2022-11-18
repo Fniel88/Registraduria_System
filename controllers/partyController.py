@@ -27,7 +27,7 @@ class PartyController:
         """
         return self.partyRepository.find_by_id(id_)
 
-    def insert_party(self, party_: dict) -> Party:
+    def insert_party(self, party_: dict) -> dict:
         """
         This method inserts a party in the DB by providing its attributes in a dictionary
         :param party_:

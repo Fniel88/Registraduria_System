@@ -27,7 +27,7 @@ class TableController:
         """
         return self.tableRepository.find_by_id(id_)
 
-    def insert_table(self, table_: dict) -> Table:
+    def insert_table(self, table_: dict) -> dict:
         """
         This method inserts a party in the DB by providing its attributes in a dictionary
         :param table_:

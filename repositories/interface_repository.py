@@ -57,7 +57,7 @@ class InterfaceRepository(Generic[T]):
             document = {}
         return document
 
-    def save(self, item: T) -> T:
+    def save(self, item: T) -> dict:
         current_collection = self.data_base[self.collection]
         item = self.transform_refs(item)
         if hasattr(item, '_id') and item._id != "":
@@ -65,7 +65,7 @@ class InterfaceRepository(Generic[T]):
             id_ = item._id
             _id = ObjectId(id_)
             delattr(item, '_id')
-            item = item.__dict__()
+            item = item.__dict__
             updated_item = {"$set": item}
             current_collection.update_one({'_id': _id}, updated_item)
         else:
@@ -113,10 +113,10 @@ class InterfaceRepository(Generic[T]):
     def get_values_db_ref(self, document: dict) -> dict:
         for key in document.keys():
             value = document.get(key)
-            if isinstance(document.get(key), DBRef):
+            if isinstance(value, DBRef):
                 collection_ref = self.data_base[value.collection]
                 _id = ObjectId(value.id)
-                document_ref = collection_ref.find({'_id': _id})
+                document_ref = collection_ref.find_one({'_id': _id})
                 document_ref['_id'] = document_ref['_id'].__str__()
                 document[key] = document_ref
                 document[key] = self.get_values_db_ref(document[key])
@@ -124,7 +124,7 @@ class InterfaceRepository(Generic[T]):
                 document[key] = self.get_values_db_ref_from_list(value)
             elif isinstance(value, dict):
                 document[key] = self.get_values_db_ref(value)
-            return document
+        return document
 
     def get_values_db_ref_from_list(self, list_: list) -> list:
         processed_list = []
