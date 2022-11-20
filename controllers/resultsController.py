@@ -44,10 +44,15 @@ class ResultController:
         :param result_:
         :return: result dictionary
         """
+        # print("insert")
         new_result = Result(result_)
+        # print("result", new_result)
+        # print("table_id", table_id)
         table_dict = self.tableRepository.find_by_id(table_id)
+        # print("table_dict", table_dict)
         table_obj = Table(table_dict)
         candidate_dict = self.candidateRepository.find_by_id(candidate_id)
+        # print("candidate_dict", candidate_dict)
         candidate_obj = Candidate(candidate_dict)
         new_result.table = table_obj
         new_result.candidate = candidate_obj
