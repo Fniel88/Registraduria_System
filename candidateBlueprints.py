@@ -38,7 +38,7 @@ def update_candidate(id_: str) -> dict:
 
 
 @candidate_blueprints.route("/candidate/delete/<string:id_>", methods=['DELETE'])
-def delete_candidate(id_: str) -> dict:
+def delete_candidate(id_: str) -> tuple:
     url = url_base + f"/delete/{id_}"
     response = requests.delete(url, headers=HEADERS)
-    return response.json()
+    return {"message": "processed"}, response.status_code
