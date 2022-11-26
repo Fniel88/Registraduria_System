@@ -1,5 +1,5 @@
 import requests
-
+# =============Here be create the roles and permission that can have a peron==================
 security_backend = "http://127.0.0.1:8080"
 headers = {"Content-Type": "application/json; charset=utf-8"}
 
@@ -21,7 +21,9 @@ print('='*30)
 modules = ['candidate', 'party', 'table', 'result', 'user', 'rol', 'permission']
 endpoints = [('s', 'GET'), ('/?', 'GET'), ('/insert', 'POST'), ('/update/?', 'PUT'), ('/delete/?', 'DELETE')]
 url = f'{security_backend}/permission/insert'
-letter_y = "y"
+
+# Ciclo that iter into a modules and endpoints for getting the correct endpoints that the role going to have
+
 for module in modules:
     for endpoint, method in endpoints:
         permission = f'/{module}{endpoint}'
@@ -29,6 +31,7 @@ for module in modules:
             "url": permission,
             "method": method
         }
+
         response = requests.post(url, headers=headers, json=body)
         print(response.json())
         data_ = response.json()

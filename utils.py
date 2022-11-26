@@ -4,11 +4,15 @@ import requests
 
 HEADERS = {"Content-Type": "application/json; charset=utf-8"}
 
+# Read the information that gives the database
+
 
 def load_file_config():
     with open("config.json", "r") as file_:
         data = json.load(file_)
     return data
+
+# Protection of the url
 
 
 def clean_url(url: str) -> str:
@@ -17,6 +21,8 @@ def clean_url(url: str) -> str:
         if re.search('\\d', segment):
             url = url.replace(segment, "?")
     return url
+
+# Validate that a rol has the enough endpoints like permissions
 
 
 def validate_grant(endpoint: str, method: str, id_rol: int) -> bool:

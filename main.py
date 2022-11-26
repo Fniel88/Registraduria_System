@@ -15,6 +15,7 @@ from resultsBlueprints import result_blueprints
 from userBlueprints import user_blueprints
 from permissionBlueprints import permission_blueprints
 
+# =========================Here be register the blueprints====================================
 app = Flask(__name__)
 app.config["JWT_SECRET_KEY"] = "hello"
 cors = CORS(app)
@@ -26,6 +27,7 @@ app.register_blueprint(result_blueprints)
 app.register_blueprint(user_blueprints)
 app.register_blueprint(permission_blueprints)
 
+# Validate the permission that has rol
 
 @app.before_request
 def before_request_callback():
@@ -47,6 +49,8 @@ def before_request_callback():
 def home():
     response = {"message": "Welcome to API"}
     return response
+
+# Here is validated the token and permission that could have a rol
 
 
 @app.route("/login", methods=['POST'])
