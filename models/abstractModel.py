@@ -1,5 +1,7 @@
 from abc import ABCMeta
 
+# Where iter the param that was given in the Model
+
 
 class AbstractModel(metaclass=ABCMeta):
 

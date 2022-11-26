@@ -33,6 +33,7 @@ class InterfaceRepository(Generic[T]):
         with open("config.json", "r") as config:
             data = json.load(config)
         return data
+    # Function that find, compare, and send the _id with the information
 
     def find_all(self) -> list:
         current_collection = self.data_base[self.collection]
@@ -44,6 +45,7 @@ class InterfaceRepository(Generic[T]):
             dataset.append(document)
         return dataset
 
+    # Function that filter by _id and send the information
     def find_by_id(self, id_: str) -> dict:
         current_collection = self.data_base[self.collection]
         _id = ObjectId(id_)
@@ -57,6 +59,7 @@ class InterfaceRepository(Generic[T]):
             document = {}
         return document
 
+    # Here we have two functions where can be for updating o creating a new info
     def save(self, item: T) -> dict:
         current_collection = self.data_base[self.collection]
         item = self.transform_refs(item)
@@ -83,6 +86,7 @@ class InterfaceRepository(Generic[T]):
         document = current_collection.update_one({'_id': _id}, updated_item)
         return {"Updated count": document.matched_count}
 
+    # Function that delete information by it is _id
     def delete(self, id_: str) -> dict:
         current_collection = self.data_base[self.collection]
         _id = ObjectId(id_)
@@ -109,6 +113,7 @@ class InterfaceRepository(Generic[T]):
             document = self.get_values_db_ref(document)
             dataset.append(document)
         return dataset
+    # Function that iter with it _id
 
     def get_values_db_ref(self, document: dict) -> dict:
         for key in document.keys():
@@ -165,6 +170,7 @@ class InterfaceRepository(Generic[T]):
                 object_ = self.object_to_db_ref(getattr(item, key))
                 setattr(item, key, object_)
         return item
+    # Transform a DBRef
 
     def object_to_db_ref(self, item_ref: T) -> DBRef:
         collection_ref = item_ref.__class__.__name__.lower()

@@ -12,6 +12,7 @@ class PartyController:
         self.partyRepository = PartyRepository()
         print("Party controller ready...")
 
+# Function that gives whole parties calling the repository
     def get_all_party(self) -> list:
         """
         This method get all the parties stored in the DB
@@ -19,6 +20,7 @@ class PartyController:
         """
         return self.partyRepository.find_all()
 
+# Function that gives a party by it is id calling the repository
     def get_party_by_id(self, id_: str) -> dict:
         """
         This method gets one party in the DB by providing its id
@@ -27,6 +29,7 @@ class PartyController:
         """
         return self.partyRepository.find_by_id(id_)
 
+# Function that inserts a party calling the repository
     def insert_party(self, party_: dict) -> dict:
         """
         This method inserts a party in the DB by providing its attributes in a dictionary
@@ -36,7 +39,7 @@ class PartyController:
         new_party = Party(party_)
         return self.partyRepository.save(new_party)
 
-# UPDATE party
+# Function that updates a party calling the repository
     def update_party(self, id_: str, party_: dict) -> dict:
         """
         This method updates a party in the DB by providing its id and attributes
@@ -47,7 +50,7 @@ class PartyController:
         party = Party(party_)
         return self.partyRepository.update(id_, party)
 
-# DELETE party
+# Function that deletes a party calling teh repository
     def delete_party(self, id_: str) -> dict:
         """
         This method deletes a party in the DB by providing its id

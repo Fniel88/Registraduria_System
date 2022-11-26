@@ -11,6 +11,7 @@ class TableController:
         """
         self.tableRepository = TableRepository()
         print("Table controller ready...")
+# Function that gives whole tables calling the repository
 
     def get_all_table(self) -> list:
         """
@@ -18,6 +19,7 @@ class TableController:
         :return: list of tables
         """
         return self.tableRepository.find_all()
+# Function that gives a table by it is id calling the repository
 
     def get_table_by_id(self, id_: str) -> dict:
         """
@@ -26,6 +28,7 @@ class TableController:
         :return: table dictionary
         """
         return self.tableRepository.find_by_id(id_)
+# Function that inserts a table calling the repository
 
     def insert_table(self, table_: dict) -> dict:
         """
@@ -36,7 +39,7 @@ class TableController:
         new_table = Table(table_)
         return self.tableRepository.save(new_table)
 
-# UPDATE table
+# Function that updates a table calling the repository
     def update_table(self, id_: str, table_: dict) -> dict:
         """
         This method updates a party in the DB by providing its id and attributes
@@ -47,7 +50,7 @@ class TableController:
         table = Table(table_)
         return self.tableRepository.update(id_, table)
 
-# DELETE table
+# Function that deletes a table calling the repository
     def delete_table(self, id_: str) -> dict:
         """
         This method deletes a table in the DB by providing its id

@@ -15,12 +15,16 @@ class CandidateController:
         self.partyRepository = PartyRepository()
         print("Candidate controller ready...")
 
+    # Function that gives all candidates calling the repository
+
     def get_all_candidate(self) -> list:
         """
         This method get all the candidates stored in the DB
         :return: list of candidates
         """
         return self.candidateRepository.find_all()
+
+    # Function that gives a candidate calling the repository
 
     def get_candidate_by_id(self, id_: str) -> dict:
         """
@@ -29,6 +33,8 @@ class CandidateController:
         :return: candidate dictionary
         """
         return self.candidateRepository.find_by_id(id_)
+
+    # Function that inserts a candidate calling the repository
 
     def insert_candidate(self, candidate_: dict) -> dict:
         """
@@ -39,7 +45,7 @@ class CandidateController:
         new_candidate = Candidate(candidate_)
         return self.candidateRepository.save(new_candidate)
 
-# UPDATE candidate
+# Function that updates a candidate calling the repository
     def update_candidate(self, id_: str, candidate_: dict) -> dict:
         """
         This method updates a party in the DB by providing its id and attributes
@@ -50,7 +56,7 @@ class CandidateController:
         candidate = Candidate(candidate_)
         return self.candidateRepository.update(id_, candidate)
 
-# DELETE candidate
+# Function that deletes a candidate calling the repository
     def delete_candidate(self, id_: str) -> dict:
         """
         This method deletes a candidate in the DB by providing its id
@@ -60,7 +66,7 @@ class CandidateController:
         print("Deleted " + id_)
         return self.candidateRepository.delete(id_)
 
-# SERVICE REFERENCE
+# Function where relation a candidate to party calling their repositories and transforming obj to dict
     def party_assign(self, candidate_id: str, party_id: str) -> dict:
         candidate_dict = self.candidateRepository.find_by_id(candidate_id)
         candidate_obj = Candidate(candidate_dict)
