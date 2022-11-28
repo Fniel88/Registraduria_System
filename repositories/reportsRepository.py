@@ -33,7 +33,7 @@ class ReportsRepository(InterfaceRepository[Result]):
         query_add_fields = {
             "$addFields": {
                 "name": "$_id.name",
-                "last name": "$_id.last_name",
+                "last_name": "$_id.last_name",
                 "_id": "$_id._id"
             }
         }
@@ -179,7 +179,7 @@ class ReportsRepository(InterfaceRepository[Result]):
         query_group_party = {
             "$group": {
                 "_id": "$party_info",
-                "Final vote": {"$sum": "$Votos"}
+                "Final_vote": {"$sum": "$Votos"}
             }
         }
         query_add_fields_party = {
