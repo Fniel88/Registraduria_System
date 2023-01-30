@@ -1,0 +1,66 @@
+<div class="row">
+    <div class="col-lg-12">
+        <nb-card>
+            <nb-card-header *ngIf="creationMode">
+                CREAR USUARIO
+            </nb-card-header>
+            <nb-card-header *ngIf="!creationMode">
+                ACTUALIZAR USUARIO
+            </nb-card-header>
+            <nb-card-body>
+                <div class="row">
+                    <div class="col-lg-3">
+                        <label>Username</label>
+                    </div>
+                    <div class="col-lg-9">
+                        <input type="text" class="form-control"
+                                [(ngModel)]="user.nickname" fullWidth />
+                        <p *ngFor="sendingAttemp && user.nickname==''">Requerido</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3">
+                        <label>Correo Electronico</label>
+                    </div>
+                    <div class="col-lg-9">
+                        <input type="email" class="form-control" [disabled]="!creationMode"
+                                [(ngModel)]="user.email" fullWidth />
+                        <p *ngIf="sendingAttemp && user.email==''">Requerido</p>
+                    </div>
+                </div>
+                <ng-container *ngIf="creationMode">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <label>Contraseña</label>
+                        </div>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control"
+                                    [(ngModel)]="user.password" fullwidth />
+                            <p *ngFor="sendingAttemp && user.password==''">Requerido</p>
+                        </div>
+                    </div>
+                </ng-container>
+                <div class="row">
+                    <div class="col-lg-3">
+                        <label>Rol</label>
+                    </div>
+                    <div class="col-lg-9">
+                        <select class="form-control" [(ngModel)]="user.rol.idRol" fullWidth>
+                            <option *ngFor="let rol of roles" [value]="rol.idRol">{{rol.name}}</option>
+                        </select>
+                        <p *ngIf="sendingAttemp && user.rol.idRol==null">Requerido</p>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <button *ngIf="creationMode" class="btn btn-primary btn-block" (click)="create()">
+                        Crear
+                    </button>
+                    <button *ngIf="!creationMode" class="btn btn-primary btn-block" (click)="edit()">
+                        Actualizar
+                    </button>
+                </div>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>

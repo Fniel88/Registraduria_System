@@ -1,0 +1,32 @@
+<div>
+    <div class="col-lg-12">
+        <nb-card>
+            <nb-card-header>
+                ADMINISTRACION DE USUARIOS
+                <button type="button" class="btn btn-succes" (click)="create()">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </nb-card-header>
+            <table class="table">
+                <tr>
+                    <th *ngFor="let column of columnNames">{{column}}</th>
+                </tr>
+                <ng-container *ngFor="let user of users">
+                    <tr>
+                        <td>{{user.nickname}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.rol.name}}</td>
+                        <td>
+                            <button type="button" class="btn btn-primary" (click)="edit(user.id)">
+                                <i class="fas fa-pencil-alt"></i>
+                            </button>
+                            <button type="button" class="btn btn-danger" (click)="delete(user.id)">
+                                <i class="fas fa-solid fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </ng-container>
+            </table>
+        </nb-card>
+    </div>
+</div>

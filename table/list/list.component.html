@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-lg-12">
+        <nb-card>
+            <nb-card-header>
+                ADMINISTRACION DE MESAS
+                <button type="button" class="btn btn-success" (click)="create()">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </nb-card-header>
+            <table class="table">
+                <tr>
+                    <th *ngFor="let column of columNames">
+                        {{column}}
+                    </th>
+                </tr>
+                <ng-container *ngFor="let table of tables">
+                    <tr>
+                        <td>{{table.number_table}}</td>
+                        <td>{{table.registered_cards}}</td>
+                        <td>
+                            <button type="button" class="btn btn-primary" (click)="updateOne(table._id)">
+                                <i class="fas fa-pencil-alt"></i>
+                            </button>
+                            <button type="button" class="btn btn-danger" (click)="deleteOne(table._id)">
+                                <i class="fas fa-solid fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </ng-container>
+            </table>
+        </nb-card>
+    </div>
+</div>  

@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="col-lg-12">
+        <nb-card>
+            <nb-card-header>
+                REPORTE DE VOTACIONES POR CANDIDATO
+            </nb-card-header>
+            <ng-container>
+                <div class="row">
+                        <div class="col-lg-9">
+                            <table class="table">
+                                <tr>
+                                <th *ngFor="let column of columnNames">{{column}}</th>
+                                </tr>
+                                <ng-container *ngFor="let candidate of dataCandidates">
+                                    <tr>
+                                        <td>{{candidate.name}}</td>
+                                        <td>{{candidate.last_name}}</td>
+                                        <td>{{candidate.Votos}}</td>
+                                    </tr>
+                                </ng-container>
+                            </table>
+                        </div>
+                </div>
+            </ng-container>
+        </nb-card>
+    </div>
+</div>
+

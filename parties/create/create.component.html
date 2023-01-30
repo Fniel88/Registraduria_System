@@ -1,0 +1,44 @@
+<div class="row">
+    <div class="col-lg-12">
+        <nb-card>
+            <nb-card-header *ngIf="creationMode">
+                CREAR PARTIDO
+            </nb-card-header>
+            <nb-card-header *ngIf="!creationMode">
+                ACTUALIZAR PARTIDO
+            </nb-card-header>
+            <nb-card-body>
+                <div class="row">
+                    <div class="col-lg-3">
+                        <label>Nombre del Partido</label>
+                    </div>
+                    <div class="col-lg-9">
+                        <input type="text" class="form-control"
+                                [disabled]="!creationMode" [(ngModel)]="party.name">
+                        <p *ngIf="sendingAttemp && party.name==''">Requerido</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3">
+                        <label>Lema</label>
+                    </div>
+                    <div class="col-lg-9">
+                        <input type="text" class="form-control"
+                                [(ngModel)]="party.motto">
+                        <p *ngIf="sendingAttemp && party.motto==''">Requerido</p>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <button *ngIf="creationMode" class="btn btn-primary btn-block" (click)="create()">
+                        Crear
+                    </button>
+                    <button *ngIf="!creationMode" class="btn btn-primary btn-block" (click)="updateOne()">
+                        Actualizar
+                    </button>
+                </div>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>
+

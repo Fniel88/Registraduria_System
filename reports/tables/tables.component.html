@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="col-lg-12">
+        <nb-card>
+            <nb-card-header>
+                REPORTE DE VOTACIONES POR MESA
+            </nb-card-header>
+            <ng-container>
+                <div class="row">
+                        <div class="col-lg-9">
+                            <table class="table">
+                                <tr>
+                                <th *ngFor="let column of columnNames">{{column}}</th>
+                                </tr>
+                                <ng-container *ngFor="let table of dataTables">
+                                    <tr>
+                                        <td>{{table.Number}}</td>
+                                        <td>{{table.Votos}}</td>
+                                    </tr>
+                                </ng-container>
+                            </table>
+                        </div>
+                </div>
+                <div class="col-lg-6">        
+                </div>
+            </ng-container>
+        </nb-card>
+    </div>
+</div>
