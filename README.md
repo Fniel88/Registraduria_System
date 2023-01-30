@@ -7,6 +7,6 @@ Evidencia: https://drive.google.com/drive/folders/1fukCAvFzjmEUFiTDAbMRAgfUgmDaA
 
 # Electoral system for Senate elections
 
-GitHub where you are gonna see a proyect given by MSION TIC 2022, for being manipulated by students and create a electoral system of Colombia, this is a local web create by Daniel Charria and Laura Rodriguez, it was changed for an academic propouse.
+GitHub where you are gonna see a proyect given by MSION TIC 2022, for being manipulated by students and create a electoral system of Colombia, this is a local web create by Daniel Charria and Laura Rodriguez, it was changed for an academic purpose.
 
 Evidence : https://drive.google.com/drive/folders/1fukCAvFzjmEUFiTDAbMRAgfUgmDaAK7E?usp=share_link
